@@ -5,6 +5,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-}
-
-module.exports = nextConfig
+  allowedDevOrigins: ['143.167.102.50'],
+};
+module.exports = nextConfig;
