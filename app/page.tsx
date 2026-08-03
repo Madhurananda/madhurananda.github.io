@@ -31,9 +31,8 @@ import {
   SiR,
   SiJavascript,
   SiGnubash,
-  SiJupyter,           // Jupyter (alternative for some tools)
+  SiJupyter,
 } from 'react-icons/si';
-// For MATLAB and Java, use Font Awesome icons as fallback
 import { FaJava, FaChartBar } from 'react-icons/fa';
 
 export default function HomePage() {
@@ -77,12 +76,39 @@ export default function HomePage() {
     { icon: SiKubernetes, label: 'Kubernetes' },
     { icon: SiMysql, label: 'SQL' },
     { icon: SiR, label: 'R' },
-    { icon: FaJava, label: 'Java' },        // Using Font Awesome for Java
+    { icon: FaJava, label: 'Java' },
     { icon: SiJavascript, label: 'JavaScript' },
     { icon: SiGnubash, label: 'Bash' },
     { icon: SiJupyter, label: 'Jupyter' },
-    // MATLAB – using Font Awesome chart icon as a placeholder
     { icon: FaChartBar, label: 'MATLAB' },
+  ];
+
+  // News items from LinkedIn posts
+  const newsItems = [
+    {
+      title: '6 Papers Accepted to Interspeech 2026',
+      description:
+        'We are thrilled to share that 6 of our papers have been accepted to Interspeech 2026, including work on speech biomarkers for dementia detection.',
+      date: '2026',
+      link: 'https://lnkd.in/p/eg8-8vaE',
+      tags: ['#Interspeech2026', '#SpeechBiomarkers', '#DementiaDetection'],
+    },
+    {
+      title: 'PROCESS-2: New Benchmark Speech Dataset Released',
+      description:
+        'PROCESS-2 is a new large-scale speech dataset with 400 participants across the UK, designed for cognitive assessment and dementia detection research. Available now under controlled access.',
+      date: '2026',
+      link: 'https://lnkd.in/p/eR_UPH_r',
+      tags: ['#PROCESS2', '#SpeechDataset', '#CognitiveAssessment'],
+    },
+    {
+      title: 'Neural Audio Codec Models for Dementia Detection',
+      description:
+        'Research visit at the University of Sheffield exploring neural audio codec models for dementia detection – a unified speech representation approach without requiring separate transcription.',
+      date: '2026',
+      link: 'https://lnkd.in/p/eF8ibb3t',
+      tags: ['#NeuralAudioCodec', '#DementiaDetection', '#SpeechTechnology'],
+    },
   ];
 
   return (
@@ -112,20 +138,21 @@ export default function HomePage() {
             <span className="animate-pulse">_</span>
           </p>
           <p className="text-base md:text-lg leading-relaxed max-w-2xl mt-4 text-gray-600 dark:text-gray-300">
-            Self-driven, quick starter, passionate programmer with a curious mind who enjoys solving complex and challenging real-world problems using AI. 
+            Self-driven, quick starter, passionate programmer with a curious mind who enjoys solving complex and challenging real-world problems using AI.
           </p>
+          {/* ===== BUTTONS: Both identical and outlined ===== */}
           <div className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start">
             <Link
-              href="/about"
-              className="px-6 py-2 border border-accent text-accent rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-            >
-              About Me
-            </Link>
-            <Link
               href="/resume"
-              className="px-6 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+              className="px-6 py-2 border border-accent text-accent rounded-lg hover:underline transition"
             >
               View Resume
+            </Link>
+            <Link
+              href="/about"
+              className="px-6 py-2 border border-accent text-accent rounded-lg hover:underline transition"
+            >
+              About Me
             </Link>
           </div>
         </div>
@@ -165,34 +192,44 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Research Highlights */}
+      {/* ===== NEWS SECTION ===== */}
       <section className="mt-16">
-        <h2 className="text-2xl font-bold mb-6">Selected Research Highlights</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-xl">
-            <h3 className="font-bold text-lg">CognoSpeak</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-              AI-driven early detection of dementia from conversational speech.
-            </p>
-          </div>
-          <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-xl">
-            <h3 className="font-bold text-lg">CAGE‑TB</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-              Cough‑based tuberculosis screening using deep learning.
-            </p>
-          </div>
-          <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-xl">
-            <h3 className="font-bold text-lg">PROCESS‑2</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-              A benchmark speech corpus for early cognitive impairment.
-            </p>
-          </div>
-          <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-xl">
-            <h3 className="font-bold text-lg">NanoCNN</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-              Detecting RNA modifications from Oxford Nanopore sequencing.
-            </p>
-          </div>
+        <h2 className="text-2xl font-bold mb-6">Latest News</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {newsItems.map((item, index) => (
+            <a
+              key={index}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-6 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow hover:border-accent group"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-accent transition-colors">
+                  {item.title}
+                </h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0">
+                  {item.date}
+                </span>
+              </div>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+                {item.description}
+              </p>
+              <div className="flex flex-wrap gap-1 mt-3">
+                {item.tags.map((tag, tagIndex) => (
+                  <span
+                    key={tagIndex}
+                    className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <span className="inline-block mt-3 text-sm text-accent font-medium group-hover:underline">
+                Read on LinkedIn →
+              </span>
+            </a>
+          ))}
         </div>
       </section>
 

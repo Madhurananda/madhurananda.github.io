@@ -1,6 +1,13 @@
 import Image from 'next/image';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
-import { FaLinkedin, FaGithub, FaOrcid, FaGoogleScholar } from 'react-icons/fa6';
+import {
+  FaLinkedin,
+  FaGithub,
+  FaOrcid,
+  FaGoogleScholar,
+  FaXTwitter,
+  FaResearchgate,
+} from 'react-icons/fa6';
 
 export const metadata = { title: 'About' };
 
@@ -23,7 +30,7 @@ export default function AboutPage() {
           className="rounded-lg shadow-md border border-gray-200 dark:border-gray-700 w-full"
         />
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">
-          India → Scotland → South Africa → USA → United Kingdom
+          India → Scotland → South Africa → USA → England: My journey across continents in pursuit of knowledge and research.
         </p>
       </div>
 
@@ -172,6 +179,24 @@ export default function AboutPage() {
             aria-label="ORCID"
           >
             <FaOrcid />
+          </a>
+          <a
+            href="https://twitter.com/MadhuPahar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
+            aria-label="Twitter (X)"
+          >
+            <FaXTwitter />
+          </a>
+          <a
+            href="https://www.researchgate.net/profile/Madhurananda-Pahar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
+            aria-label="ResearchGate"
+          >
+            <FaResearchgate />
           </a>
           <a
             href="mailto:madhuranandapahar@gmail.com"

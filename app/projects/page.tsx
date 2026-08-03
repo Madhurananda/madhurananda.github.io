@@ -1,4 +1,13 @@
 import Link from 'next/link';
+import { EnvelopeIcon } from '@heroicons/react/24/outline';
+import {
+  FaLinkedin,
+  FaGithub,
+  FaGoogleScholar,
+  FaOrcid,
+  FaXTwitter,
+  FaResearchgate,
+} from 'react-icons/fa6';
 
 export const metadata = { title: 'Projects' };
 
@@ -157,20 +166,20 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <div className="prose prose-lg dark:prose-invert max-w-none">
-      <h1>Research and Innovation Projects</h1>
+    <div className="w-full">
+      <h1 className="text-4xl font-bold font-bricolage mb-6">Research and Innovation Projects</h1>
 
       <div className="space-y-8 mt-6">
         {projects.map((project) => (
           <div key={project.title} className="border-l-4 border-accent pl-4 py-2">
             {/* Title + Period on same row */}
             <div className="flex justify-between items-baseline">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-0">{project.title}</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-0">{project.title}</h2>
               <span className="text-base text-gray-700 dark:text-gray-400 whitespace-nowrap">{project.period}</span>
             </div>
 
             {/* Institution */}
-            <p className="text-base text-gray-700 dark:text-gray-400 mt-0">
+            <p className="text-lg text-gray-700 dark:text-gray-400 mt-0">
               {project.institution}
             </p>
 
@@ -183,7 +192,7 @@ export default function ProjectsPage() {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-base text-accent hover:underline"
+                    className="text-lg text-accent hover:underline"
                   >
                     {link.label}
                   </Link>
@@ -191,10 +200,10 @@ export default function ProjectsPage() {
               </div>
             )}
 
-            {/* Description - now as bullet points */}
-            <ul className="mt-2 space-y-1">
+            {/* Description - as bullet points */}
+            <ul className="mt-2 list-disc list-inside space-y-1">
               {project.description.map((item, index) => (
-                <li key={index} className="text-base leading-relaxed text-gray-800 dark:text-gray-200">
+                <li key={index} className="text-lg leading-relaxed text-gray-800 dark:text-gray-200">
                   {item}
                 </li>
               ))}
@@ -215,6 +224,74 @@ export default function ProjectsPage() {
             )}
           </div>
         ))}
+      </div>
+
+      {/* ===== SOCIAL LINKS AT BOTTOM ===== */}
+      <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+        <h2 className="text-xl font-bold mb-4 text-center">Connect with me</h2>
+        <div className="flex flex-wrap justify-center gap-6 text-3xl">
+          <a
+            href="https://www.linkedin.com/in/madhurananda/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin />
+          </a>
+          <a
+            href="https://github.com/Madhurananda"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
+            aria-label="GitHub"
+          >
+            <FaGithub />
+          </a>
+          <a
+            href="https://scholar.google.co.uk/citations?user=P2clDtkAAAAJ&hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
+            aria-label="Google Scholar"
+          >
+            <FaGoogleScholar />
+          </a>
+          <a
+            href="https://orcid.org/0000-0002-5926-0144"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
+            aria-label="ORCID"
+          >
+            <FaOrcid />
+          </a>
+          <a
+            href="https://twitter.com/MadhuPahar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
+            aria-label="Twitter (X)"
+          >
+            <FaXTwitter />
+          </a>
+          <a
+            href="https://www.researchgate.net/profile/Madhurananda-Pahar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
+            aria-label="ResearchGate"
+          >
+            <FaResearchgate />
+          </a>
+          <a
+            href="mailto:madhuranandapahar@gmail.com"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
+            aria-label="Email"
+          >
+            <EnvelopeIcon className="w-7 h-7" />
+          </a>
+        </div>
       </div>
     </div>
   );
