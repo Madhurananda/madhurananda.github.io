@@ -5,13 +5,11 @@
    ======================================== */
 
 :root {
-  /* Light mode colors */
+  /* Light mode colors - darker text for readability */
   --color-bg: #ffffff;
-  --color-text: #1f2937;
+  --color-text: #111827;           /* dark gray-900 - much darker than before */
   --color-card: #f9fafb;
   --color-border: #e5e7eb;
-
-  /* 👇 Accent color: black in light mode */
   --color-primary: #000000;
   --color-primary-hover: #333333;
 }
@@ -22,8 +20,6 @@
   --color-text: #f3f4f6;
   --color-card: #111827;
   --color-border: #374151;
-
-  /* 👇 Accent color: white in dark mode */
   --color-primary: #ffffff;
   --color-primary-hover: #cccccc;
 }
@@ -67,6 +63,17 @@ a:hover {
 /* ========================================
    UTILITY OVERRIDES FOR TAILWIND
    ======================================== */
+/* Light mode - all text classes use dark color for readability */
+.text-gray-300,
+.text-gray-400,
+.text-gray-500,
+.text-gray-600,
+.text-gray-700,
+.text-gray-800,
+.text-gray-900 {
+  color: var(--color-text) !important;
+}
+
 .bg-white {
   background-color: var(--color-bg) !important;
 }
@@ -79,18 +86,6 @@ a:hover {
   background-color: var(--color-card) !important;
 }
 
-.text-gray-800 {
-  color: var(--color-text) !important;
-}
-
-.text-gray-600 {
-  color: var(--color-text) !important;
-}
-
-.text-gray-500 {
-  color: var(--color-text) !important;
-}
-
 .border-gray-200 {
   border-color: var(--color-border) !important;
 }
@@ -99,7 +94,9 @@ a:hover {
   border-color: var(--color-border) !important;
 }
 
-/* Dark mode overrides for Tailwind classes */
+/* ========================================
+   DARK MODE OVERRIDES
+   ======================================== */
 [data-theme="dark"] .bg-white {
   background-color: #030712 !important;
 }
@@ -112,16 +109,32 @@ a:hover {
   background-color: #111827 !important;
 }
 
-[data-theme="dark"] .text-gray-800 {
-  color: #f3f4f6 !important;
+[data-theme="dark"] .text-gray-300 {
+  color: #d1d5db !important;
+}
+
+[data-theme="dark"] .text-gray-400 {
+  color: #9ca3af !important;
+}
+
+[data-theme="dark"] .text-gray-500 {
+  color: #9ca3af !important;
 }
 
 [data-theme="dark"] .text-gray-600 {
   color: #d1d5db !important;
 }
 
-[data-theme="dark"] .text-gray-500 {
-  color: #9ca3af !important;
+[data-theme="dark"] .text-gray-700 {
+  color: #d1d5db !important;
+}
+
+[data-theme="dark"] .text-gray-800 {
+  color: #f3f4f6 !important;
+}
+
+[data-theme="dark"] .text-gray-900 {
+  color: #f3f4f6 !important;
 }
 
 [data-theme="dark"] .border-gray-200 {
@@ -138,18 +151,6 @@ a:hover {
 
 [data-theme="dark"] .bg-gray-900 {
   background-color: #111827 !important;
-}
-
-[data-theme="dark"] .text-gray-300 {
-  color: #d1d5db !important;
-}
-
-[data-theme="dark"] .text-gray-400 {
-  color: #9ca3af !important;
-}
-
-[data-theme="dark"] .text-gray-700 {
-  color: #d1d5db !important;
 }
 
 /* ========================================
@@ -269,4 +270,27 @@ a:hover {
 
 [data-theme="dark"] .prose ul li {
   color: #d1d5db;
+}
+
+/* ========================================
+   MARQUEE ANIMATION
+   ======================================== */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+/* Pause on hover */
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

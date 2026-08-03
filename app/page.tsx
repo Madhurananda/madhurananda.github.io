@@ -1,44 +1,89 @@
-'use client';   // needed for client-side effects
+'use client';
 
 import { useEffect, useRef } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import {
   EnvelopeIcon,
-  PhoneIcon,
-  MapPinIcon,
 } from '@heroicons/react/24/outline';
 import {
   FaLinkedin,
   FaGithub,
   FaGoogleScholar,
   FaOrcid,
+  FaXTwitter,
+  FaResearchgate,
 } from 'react-icons/fa6';
+import {
+  SiPython,
+  SiPytorch,
+  SiTensorflow,
+  SiKeras,
+  SiHuggingface,
+  SiScikitlearn,
+  SiDjango,
+  SiFastapi,
+  SiOpencv,
+  SiNumpy,
+  SiPandas,
+  SiDocker,
+  SiKubernetes,
+  SiMysql,
+  SiR,
+  SiJavascript,
+  SiGnubash,
+  SiJupyter,           // Jupyter (alternative for some tools)
+} from 'react-icons/si';
+// For MATLAB and Java, use Font Awesome icons as fallback
+import { FaJava, FaChartBar } from 'react-icons/fa';
 
 export default function HomePage() {
   const typedRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // dynamic import to avoid SSR issues
     import('typed.js').then((module) => {
       const Typed = module.default;
       if (typedRef.current) {
         new Typed(typedRef.current, {
           strings: [
-            'I build AI systems that listen to clincial audio, sensor, and genomic data.',
-            'I detect dementia, tuberculosis, and COVID‑19 from audio.',
-            'I bridge AI with real‑world clinical deployment.',
+            'I build AI systems that listen to clinical audio, sensor, and genomic data ',
+            'I detect dementia, tuberculosis, and COVID‑19 from audio ',
+            'I bridge AI with real‑world clinical deployment ',
           ],
           typeSpeed: 40,
-          backSpeed: 0,           // no backspace animation
-          backDelay: 2000,        // pause 1s before clearing (optional)
+          backSpeed: 0,
+          backDelay: 2000,
           loop: true,
           showCursor: true,
-          cursorChar: '_',
+          cursorChar: ' ',
         });
       }
     });
   }, []);
+
+  // Skills with icon components and labels
+  const skills = [
+    { icon: SiPython, label: 'Python' },
+    { icon: SiPytorch, label: 'PyTorch' },
+    { icon: SiTensorflow, label: 'TensorFlow' },
+    { icon: SiKeras, label: 'Keras' },
+    { icon: SiHuggingface, label: 'Hugging Face' },
+    { icon: SiScikitlearn, label: 'Scikit-learn' },
+    { icon: SiDjango, label: 'Django' },
+    { icon: SiFastapi, label: 'FastAPI' },
+    { icon: SiOpencv, label: 'OpenCV' },
+    { icon: SiNumpy, label: 'NumPy' },
+    { icon: SiPandas, label: 'Pandas' },
+    { icon: SiDocker, label: 'Docker' },
+    { icon: SiKubernetes, label: 'Kubernetes' },
+    { icon: SiMysql, label: 'SQL' },
+    { icon: SiR, label: 'R' },
+    { icon: FaJava, label: 'Java' },        // Using Font Awesome for Java
+    { icon: SiJavascript, label: 'JavaScript' },
+    { icon: SiGnubash, label: 'Bash' },
+    { icon: SiJupyter, label: 'Jupyter' },
+    // MATLAB – using Font Awesome chart icon as a placeholder
+    { icon: FaChartBar, label: 'MATLAB' },
+  ];
 
   return (
     <>
@@ -67,7 +112,7 @@ export default function HomePage() {
             <span className="animate-pulse">_</span>
           </p>
           <p className="text-base md:text-lg leading-relaxed max-w-2xl mt-4 text-gray-600 dark:text-gray-300">
-            Self-driven, quick starter, passionate programmer with a curious mind who enjoys solving a complex and challenging real-world problems using AI. 
+            Self-driven, quick starter, passionate programmer with a curious mind who enjoys solving complex and challenging real-world problems using AI. 
           </p>
           <div className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start">
             <Link
@@ -86,7 +131,41 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Research Highlights (same as before) */}
+      {/* ===== MOVING SKILL ICONS ===== */}
+      <section className="mt-12">
+        <h2 className="text-xl font-bold mb-4 text-center">Tech Stack &amp; Toolkits</h2>
+        <div className="relative overflow-hidden bg-gray-50 dark:bg-gray-900 py-4 rounded-xl border border-gray-200 dark:border-gray-700">
+          <div className="animate-marquee whitespace-nowrap flex gap-6 items-center">
+            {skills.map((skill, index) => {
+              const Icon = skill.icon;
+              return (
+                <span
+                  key={index}
+                  className="inline-flex items-center justify-center text-3xl text-gray-700 dark:text-gray-300 hover:text-accent transition-colors"
+                  title={skill.label}
+                >
+                  <Icon />
+                </span>
+              );
+            })}
+            {/* Duplicate for seamless looping */}
+            {skills.map((skill, index) => {
+              const Icon = skill.icon;
+              return (
+                <span
+                  key={`dup-${index}`}
+                  className="inline-flex items-center justify-center text-3xl text-gray-700 dark:text-gray-300 hover:text-accent transition-colors"
+                  title={skill.label}
+                >
+                  <Icon />
+                </span>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Research Highlights */}
       <section className="mt-16">
         <h2 className="text-2xl font-bold mb-6">Selected Research Highlights</h2>
         <div className="grid md:grid-cols-2 gap-6">
@@ -125,7 +204,7 @@ export default function HomePage() {
             href="https://www.linkedin.com/in/madhurananda/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
             aria-label="LinkedIn"
           >
             <FaLinkedin />
@@ -134,7 +213,7 @@ export default function HomePage() {
             href="https://github.com/Madhurananda"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
             aria-label="GitHub"
           >
             <FaGithub />
@@ -143,7 +222,7 @@ export default function HomePage() {
             href="https://scholar.google.co.uk/citations?user=P2clDtkAAAAJ&hl=en"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
             aria-label="Google Scholar"
           >
             <FaGoogleScholar />
@@ -152,14 +231,32 @@ export default function HomePage() {
             href="https://orcid.org/0000-0002-5926-0144"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
             aria-label="ORCID"
           >
             <FaOrcid />
           </a>
           <a
-            href="mailto:mad hupahar@gmail.com"
-            className="text-gray-600 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition"
+            href="https://twitter.com/MadhuPahar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
+            aria-label="Twitter (X)"
+          >
+            <FaXTwitter />
+          </a>
+          <a
+            href="https://www.researchgate.net/profile/Madhurananda-Pahar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
+            aria-label="ResearchGate"
+          >
+            <FaResearchgate />
+          </a>
+          <a
+            href="mailto:madhuranandapahar@gmail.com"
+            className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition"
             aria-label="Email"
           >
             <EnvelopeIcon className="w-7 h-7" />

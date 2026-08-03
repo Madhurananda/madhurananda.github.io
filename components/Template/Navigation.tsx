@@ -54,7 +54,7 @@ const navItems = [
   { label: 'Bio', href: '/about' },
   { label: 'Resume', href: '/resume' },
   { label: 'Projects', href: '/projects' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Research', href: '/research' },
 ];
 
 export default function Navigation() {
