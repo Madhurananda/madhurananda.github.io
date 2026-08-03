@@ -9,6 +9,9 @@
     "export": "node node_modules/next/dist/bin/next export"
   },
   "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/newsreader": "^5.3.0",
     "@heroicons/react": "^2.2.0",
     "next": "16.2.12",
     "react": "19.0.0",
