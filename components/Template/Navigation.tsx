@@ -28,7 +28,7 @@ export default function Navigation() {
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm font-medium transition-colors ${
+              className={`text-base font-medium transition-colors ${
                 pathname === item.href
                   ? 'text-[var(--color-primary)]'
                   : 'text-[var(--color-text)] hover:text-[var(--color-primary)]'

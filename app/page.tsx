@@ -1,3 +1,6 @@
+'use client';   // needed for client-side effects
+
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -13,12 +16,36 @@ import {
 } from 'react-icons/fa6';
 
 export default function HomePage() {
+  const typedRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    // dynamic import to avoid SSR issues
+    import('typed.js').then((module) => {
+      const Typed = module.default;
+      if (typedRef.current) {
+        new Typed(typedRef.current, {
+          strings: [
+            'I build AI systems that listen to clincial audio, sensor, and genomic data.',
+            'I detect dementia, tuberculosis, and COVID‑19 from audio.',
+            'I bridge AI with real‑world clinical deployment.',
+          ],
+          typeSpeed: 40,
+          backSpeed: 0,           // no backspace animation
+          backDelay: 2000,        // pause 1s before clearing (optional)
+          loop: true,
+          showCursor: true,
+          cursorChar: '_',
+        });
+      }
+    });
+  }, []);
+
   return (
     <>
       <div className="flex flex-col md:flex-row items-center gap-8 py-12">
         {/* Photo */}
         <div className="flex-shrink-0">
-          <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-indigo-500 shadow-lg">
+          <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-accent shadow-lg">
             <img
               src="/photo.jpg"
               alt="Dr. Madhu Pahar"
@@ -36,14 +63,16 @@ export default function HomePage() {
             Senior Research Fellow · University of Sheffield
           </p>
           <p className="text-lg leading-relaxed max-w-2xl">
-            I build AI systems that listen to speech, cough, and biological data to detect
-            diseases like dementia, tuberculosis, and COVID‑19. My work bridges machine learning
-            with real‑world clinical deployment.
+            <span ref={typedRef} className="font-medium text-accent"></span>
+            <span className="animate-pulse">_</span>
+          </p>
+          <p className="text-base md:text-lg leading-relaxed max-w-2xl mt-4 text-gray-600 dark:text-gray-300">
+            Self-driven, quick starter, passionate programmer with a curious mind who enjoys solving a complex and challenging real-world problems using AI. 
           </p>
           <div className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start">
             <Link
               href="/about"
-              className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+              className="px-6 py-2 border border-accent text-accent rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition"
             >
               About Me
             </Link>
