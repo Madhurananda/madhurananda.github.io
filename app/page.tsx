@@ -133,7 +133,8 @@ export default function HomePage() {
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-4">
             Senior Research Fellow · University of Sheffield
           </p>
-          <p className="text-lg leading-relaxed max-w-2xl">
+          {/* ===== TYPED TEXT WITH MIN-HEIGHT ===== */}
+          <p className="text-lg leading-relaxed max-w-2xl min-h-[3.5rem]">
             <span ref={typedRef} className="font-medium text-accent"></span>
             <span className="animate-pulse">_</span>
           </p>
