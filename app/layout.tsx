@@ -59,17 +59,18 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* 👇 FAVICON LINK ADDED HERE */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <Script id="theme-init" strategy="beforeInteractive">
           {`(function(){try{var t=window.localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-theme','dark')}else{document.documentElement.setAttribute('data-theme','light')}}catch(e){}})();`}
         </Script>
       </head>
-      <body className="antialiased bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-200" suppressHydrationWarning>
+      <body className="antialiased bg-[var(--color-bg)] text-[var(--color-text)]" suppressHydrationWarning>
         <div className="flex flex-col min-h-screen">
           <Navigation />
-          <main className="flex-1 max-w-4xl mx-auto px-6 py-12 w-full">
-            {children}
+          <main className="flex-1 max-w-4xl mx-auto px-4 md:px-8 py-8 w-full">
+            <div className="bg-[var(--color-card)] rounded-xl border border-[var(--color-border)] p-6 md:p-10 shadow-sm transition-colors">
+              {children}
+            </div>
           </main>
           <Footer />
         </div>
