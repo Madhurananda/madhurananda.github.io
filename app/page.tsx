@@ -44,9 +44,9 @@ export default function HomePage() {
       if (typedRef.current) {
         new Typed(typedRef.current, {
           strings: [
-            'I build AI systems that listen to clinical audio, sensor, and genomic data ',
-            'I detect dementia, tuberculosis, and COVID‑19 from audio ',
-            'I bridge AI with real‑world clinical deployment ',
+            'I build AI systems that listen to signals ',
+            'I bring research ideas to production ',
+            'I bridge AI with real‑world deployment ',
           ],
           typeSpeed: 40,
           backSpeed: 0,
