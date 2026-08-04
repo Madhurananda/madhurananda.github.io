@@ -48,16 +48,42 @@ code, pre, kbd {
 }
 
 /* ========================================
-   LINKS
+   LINKS - Main content only (thin dotted underline)
    ======================================== */
-a {
+main a {
   color: var(--color-primary);
-  text-decoration: none;
+  text-decoration: underline dotted var(--color-primary);
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px; /* 👈 makes the dotted line very thin */
 }
 
-a:hover {
-  text-decoration: underline;
+main a:hover {
   color: var(--color-primary-hover);
+  text-decoration-style: solid;
+}
+
+/* ========================================
+   HOMEPAGE - Remove dotted underline (clean look)
+   ======================================== */
+main.homepage-main a {
+  text-decoration: none !important;
+}
+
+main.homepage-main a:hover {
+  text-decoration: underline !important;
+}
+
+/* ========================================
+   Navigation & Footer links - no dotted underline
+   ======================================== */
+header a,
+footer a {
+  text-decoration: none !important;
+}
+
+header a:hover,
+footer a:hover {
+  text-decoration: underline !important;
 }
 
 /* ========================================
