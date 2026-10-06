@@ -83,6 +83,37 @@ export default function HomePage() {
     { icon: FaChartBar, label: 'MATLAB' },
   ];
 
+  // ===== IN THE MEDIA =====
+  const mediaItems = [
+    {
+      title: 'What your speech could reveal about your brain health',
+      source: 'Express Healthcare',
+      date: 'September 2026',
+      link: 'https://www.expresshealthcare.in/digital-issue/express-healthcare-september-2026/455044/#flipbook-df_455045/26/',
+      image: '/media_medtech.png',
+      description:
+        'An interview discussing how CognoSpeak, an AI-powered tool analysing speech and language, could help identify patients who need further investigation for cognitive decline.',
+    },
+    {
+      title: 'Is your cough Covid-related?',
+      source: 'News24',
+      date: 'September 2021',
+      link: 'https://www.news24.com/life/wellness/body/condition-centres/infectious-diseases/coronavirus/is-your-cough-covid-related-stellenbosch-university-researchers-say-theres-a-way-to-tell-20210930',
+      image: '/media_news24.png',
+      description:
+        'Coverage of research showing that COVID-19 positive coughs are 15% to 20% shorter than non-COVID coughs, highlighting the potential of audio classification as a non-contact screening tool.',
+    },
+    {
+      title: 'COVID-19 cough research on YouTube',
+      source: 'YouTube',
+      date: 'September 2021',
+      link: 'https://www.youtube.com/watch?v=fPIIHTmwb7M',
+      image: '/media_youtube.png',
+      description:
+        'Video coverage of the Stellenbosch University research on detecting COVID-19 from cough sounds using machine learning and smartphone recordings.',
+    },
+  ];
+
   // News items from LinkedIn posts
   const newsItems = [
     {
@@ -141,14 +172,24 @@ export default function HomePage() {
           <p className="text-base md:text-lg leading-relaxed max-w-2xl mt-4 text-gray-600 dark:text-gray-300">
             Self-driven, quick starter, passionate programmer with a curious mind who enjoys solving complex and challenging real-world problems using AI.
           </p>
-          {/* ===== BUTTONS: Both identical and outlined ===== */}
+          {/* ===== BUTTONS: Open CVs in new tab + About Me ===== */}
           <div className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start">
-            <Link
-              href="/resume"
+            <a
+              href="/madhu_CV_full.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 py-2 border border-accent text-accent rounded-lg hover:underline transition"
             >
-              View Resume
-            </Link>
+              View Full CV
+            </a>
+            <a
+              href="/madhu_CV_short.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2 border border-accent text-accent rounded-lg hover:underline transition"
+            >
+              View Short CV
+            </a>
             <Link
               href="/about"
               className="px-6 py-2 border border-accent text-accent rounded-lg hover:underline transition"
@@ -193,23 +234,70 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ===== IN THE MEDIA SECTION ===== */}
+      <section className="mt-16">
+        <h2 className="text-2xl font-bold mb-6">In the Media</h2>
+        <div className="grid grid-cols-1 gap-6">
+          {mediaItems.map((item, index) => (
+            <a
+              key={index}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow hover:border-accent group overflow-hidden"
+            >
+              <div className="flex flex-col md:flex-row">
+                {/* Image */}
+                <div className="md:w-72 md:flex-shrink-0 bg-gray-100 dark:bg-gray-800">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-48 md:h-full object-cover object-left"
+                  />
+                </div>
+                {/* Content */}
+                <div className="flex-1 p-5">
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="font-bold text-base md:text-lg text-gray-900 dark:text-white group-hover:text-accent transition-colors">
+                      {item.title}
+                    </h3>
+                    <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0">
+                      {item.date}
+                    </span>
+                  </div>
+                  <p className="text-sm font-semibold text-accent mt-1">
+                    {item.source}
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+                    {item.description}
+                  </p>
+                  <span className="inline-block mt-3 text-sm text-accent font-medium group-hover:underline">
+                    Read article →
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
       {/* ===== NEWS SECTION ===== */}
       <section className="mt-16">
         <h2 className="text-2xl font-bold mb-6">Latest News</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6">
           {newsItems.map((item, index) => (
             <a
               key={index}
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="block p-6 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow hover:border-accent group"
+              className="block p-5 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow hover:border-accent group"
             >
-              <div className="flex items-start justify-between gap-2">
-                <h3 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-accent transition-colors">
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="font-bold text-base md:text-lg text-gray-900 dark:text-white group-hover:text-accent transition-colors">
                   {item.title}
                 </h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0">
+                <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0">
                   {item.date}
                 </span>
               </div>
@@ -250,7 +338,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 mt-4 px-6 py-2 border border-accent text-accent rounded-lg hover:underline transition text-sm md:text-base"
             >
               <svg className="w-5 h-5 fill-current" viewBox="0 0 16 16">
-                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8z"/>
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
               </svg>
               View on GitHub
             </a>

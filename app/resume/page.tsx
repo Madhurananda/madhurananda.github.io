@@ -587,6 +587,11 @@ export default function WorkPage() {
       <h1 className="text-4xl font-bold font-bricolage mb-6">Certifications &amp; Activities</h1>
       <ul className="list-disc list-inside space-y-1">
         <li className="text-lg leading-relaxed text-gray-800 dark:text-gray-200">
+          <Link href="https://drive.google.com/file/d/1aQnRdZh3i7V1aMF9ftkuRaWcVj3Ag_ex/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+            AWS Cloud Practitioner
+          </Link>
+        </li>
+        <li className="text-lg leading-relaxed text-gray-800 dark:text-gray-200">
           <Link href="https://drive.google.com/file/d/1TwgkHugTXuF40LVw-GmcWSBNPc0aY2sj/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
             First Aid for Mental Health
           </Link>, Sheffield, UK
@@ -624,15 +629,6 @@ export default function WorkPage() {
         <li className="text-lg leading-relaxed text-gray-800 dark:text-gray-200">
           <Link href="https://drive.google.com/file/d/14fx6Kut0_vGM9Nblu6u1l1PA-89Th5gf/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
             Red Cross Social worker
-          </Link>
-        </li>
-        <li className="text-lg leading-relaxed text-gray-800 dark:text-gray-200">
-          Advertising COVID research in the media:&nbsp;
-          <Link href="https://www.news24.com/life/wellness/body/condition-centres/infectious-diseases/coronavirus/is-your-cough-covid-related-stellenbosch-university-researchers-say-theres-a-way-to-tell-20210930" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
-            News24
-          </Link>,&nbsp;
-          <Link href="https://www.youtube.com/watch?v=fPIIHTmwb7M" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
-            YouTube
           </Link>
         </li>
         <li className="text-lg leading-relaxed text-gray-800 dark:text-gray-200">
